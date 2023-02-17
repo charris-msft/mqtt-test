@@ -18,11 +18,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    # - uses: Azure/docker-login@v1
-    #   with: 
-    #     login-server: $acr
-    #     username: ${{ secrets_REGISTRY_USERNAME }}
-    #     password: ${{ secrets_REGISTRY_PASSWORD }}
+    - uses: Azure/docker-login@v1
+      with: 
+        login-server: $acr
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
     - name: Build the Broker image
       working-directory: ${{ env.IMAGE }}
-      run: docker build . --file Dockerfile --tag $ACR/$IMAGE:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag $ACR/$IMAGE:$(date +%s)
+        docker push $ACR/$IMAGE:$(date +%s)
