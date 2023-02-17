@@ -26,5 +26,5 @@ jobs:
     - name: Build the Broker image
       working-directory: ${{ env.IMAGE }}
       run: |
-        docker build . --file Dockerfile --tag $ACR/$IMAGE:$(date +%s)
-        docker push $ACR/$IMAGE:$(date +%s)
+        docker build . --file Dockerfile --tag $ACR/$IMAGE:latest
+        docker push $ACR/$IMAGE:latest
