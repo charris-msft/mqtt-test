@@ -1,4 +1,7 @@
 name: Broker Image CI
+env: 
+  acr: charrisagoracr.azurcr.io
+  image: mqtt-broker
 
 on:
   push:
@@ -14,6 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    # - uses: Azure/docker-login@v1
+    #   with: 
+    #     login-server: $acr
+    #     username: ${{ secrets_REGISTRY_USERNAME }}
+    #     password: ${{ secrets_REGISTRY_PASSWORD }}
     - name: Build the Broker image
-      working-directory: mqtt-broker
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      working-directory: $image
+      run: docker build . --file Dockerfile --tag $acr/$image:$(date +%s)
