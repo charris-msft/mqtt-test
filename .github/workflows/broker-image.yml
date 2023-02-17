@@ -1,7 +1,7 @@
 name: Broker Image CI
 
 env: 
-  ACR: charrisagoracr.azurcr.io
+  ACR: charrisagoracr.azurecr.io
   IMAGE: mqtt-broker
 
 on:
