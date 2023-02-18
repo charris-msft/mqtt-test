@@ -1,5 +1,9 @@
 name: Simulator Image CI
 
+env: 
+  ACR: charrisagoracr.azurecr.io
+  IMAGE: mqtt-simulator
+
 on:
   push:
     branches: [ "main" ]
