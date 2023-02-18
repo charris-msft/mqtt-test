@@ -16,8 +16,8 @@ jobs:
     name: Build container image
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # - name: Checkout repository
+      #   uses: actions/checkout@v2
 
       - name: Login to registry
         uses: docker/login-action@v2
@@ -29,8 +29,8 @@ jobs:
       - name: Build & Push
         uses: docker/build-push-action@v2
         with: 
-          context: "{{defaultContext}}:${{env.IMAGE}}"
-          file: "${{env.IMAGE}}/Dockerfile"
+          context: "{{defaultContext}}:mqtt-broker"
+          # file: "${{env.IMAGE}}/Dockerfile"
           push: true
           build-args: |
             version=latest
